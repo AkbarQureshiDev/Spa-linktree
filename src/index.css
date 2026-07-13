@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@800&display=swap');
+
+:root {
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  --bg-dark-overlay: rgba(0, 0, 0, 0.7);
+  --brand-color: #aa3bff; /* Purple brand color */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  background-color: #000;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+/* 1. Immersive Background Layer */
+.background-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Base Image with Breathing Animation */
+.background-image {
+  position: absolute;
+  inset: -5%; /* Prevent edge artifacts during scale */
+  background-image: url('https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?q=80&w=2000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  animation: breathing 8s ease-in-out infinite alternate;
+}
+
+@keyframes breathing {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.04); }
+}
+
+/* Dark Overlay */
+.background-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-dark-overlay);
+}
+
+/* Floating Ambient Orbs */
+.ambient-orb {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: floatOrb 15s ease-in-out infinite alternate;
+}
+.ambient-orb.top-left {
+  top: -100px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(255, 165, 0, 0.4), transparent 70%);
+}
+.ambient-orb.bottom-right {
+  bottom: -100px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.4), transparent 70%);
+  animation-delay: -5s;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, 40px) scale(1.1); }
+  100% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+/* Shimmer Sweep */
+.shimmer-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 200% 200%;
+  animation: shimmer 5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% -200%; }
+  100% { background-position: -200% 200%; }
+}
+
+/* Clickable Wrapper */
+.clickable-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Center Card Container */
+.center-card {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 24px;
+  position: relative;
+  z-index: 20;
+}
+
+/* Location/Info Pill */
+.info-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(245, 245, 240, 0.8);
+  font-size: 0.875rem;
+  font-weight: 500;
+  animation: borderGlow 3s infinite alternate;
+}
+
+@keyframes borderGlow {
+  0% { box-shadow: 0 0 0px rgba(255, 255, 255, 0); border-color: rgba(255, 255, 255, 0.1); }
+  100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.3); }
+}
+
+/* Main Title */
+.main-title {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 3rem;
+  color: #f5f5f0;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Body Text */
+.body-text {
+  font-family: var(--font-sans);
+  color: rgba(245, 245, 240, 0.8);
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Section Label */
+.section-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(245, 245, 240, 0.6);
+  margin-top: 16px;
+  margin-bottom: -8px;
+}
+
+/* Main Call-to-Action (Button) */
+.cta-wrapper {
+  position: relative;
+  width: 380px;
+}
+
+@media (max-width: 640px) {
+  .cta-wrapper {
+    width: calc(100vw - 48px); /* Container padding is 24px each side */
+  }
+}
+
+.cta-button {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 12px 12px 12px 32px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+
+.cta-button .text-container {
+  font-weight: 600;
+  font-size: 1.125rem;
+  z-index: 3;
+}
+
+.cta-button .icon-container {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s;
+  z-index: 3;
+}
+
+/* Hover States */
+.cta-button:hover {
+  background-color: var(--brand-color);
+  color: #ffffff;
+  transform: scale(1.04);
+}
+
+.cta-button:active {
+  transform: scale(0.97);
+}
+
+.cta-button:hover .icon-container {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Arrow animations */
+.arrow-current, .arrow-next {
+  position: absolute;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.arrow-next {
+  transform: translateX(-150%);
+  opacity: 0;
+}
+
+.cta-button:hover .arrow-current {
+  transform: translateX(150%);
+  opacity: 0;
+}
+
+.cta-button:hover .arrow-next {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Button Background Glow */
+.cta-glow {
+  position: absolute;
+  inset: -10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  filter: blur(20px);
+  z-index: 1;
+  animation: pulseGlow 3s infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.5; transform: scale(0.95); }
+  100% { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* Star Rating */
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.stars {
+  display: flex;
+  gap: 4px;
+}
+.star-icon {
+  color: #facc15;
+  filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.4));
+}
+.rating-text {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 240, 0.8);
+  font-weight: 500;
+}
+
+/* Magnetic Button Styles */
+.magnetic-demo-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.magnetic-wrapper {
+  cursor: pointer;
+  border-radius: 12px;
+  border: 1px dashed transparent;
+  transition: colors 0.15s ease-in-out;
+  padding: 8px; /* Extra padding for the magnetic hover area */
+}
+
+.magnetic-btn {
+  cursor: pointer;
+  border-radius: 8px;
+  background: linear-gradient(to bottom, #3b82f6, #1d4ed8);
+  padding: 12px 24px;
+  font-weight: 500;
+  font-size: 1.125rem;
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 
+              0 0 0 2px transparent inset;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s;
+}
+
+.magnetic-btn:active {
+  transform: scale(0.98);
+}
+
