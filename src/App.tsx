@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
-import { MapPin, Star } from 'lucide-react';
+import { MapPin, Star, Home, Building2 } from 'lucide-react';
 import './index.css';
 import MagneticButtonDemo from './components/magnetic-button-demo';
+import PhoneButton from './components/phone-button';
 
 const LocationPill = () => (
   <div className="info-pill">
@@ -95,8 +96,8 @@ function App() {
           </motion.div>
           
           <motion.h1 className="main-title" variants={itemVariants}>
-            العلاج بالتدليك <br />
-            خبراء إندونيسيون
+            3 Star Special Massage - Riyadh <br />
+            مساج 3 نجوم الخاص - الرياض
           </motion.h1>
           
           <motion.p className="body-text" variants={itemVariants} style={{ direction: 'rtl' }}>
@@ -106,13 +107,68 @@ function App() {
           <motion.div variants={itemVariants}>
             <StarRating />
           </motion.div>
+
+          {/* Service Option Cards */}
+          <motion.div variants={itemVariants} className="service-cards-section">
+            <div className="service-cards-heading">Service Options</div>
+            <div className="service-cards-grid">
+              {/* Home Visit Card */}
+              <motion.div
+                className="service-card"
+                whileHover={{ scale: 1.04, y: -6 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              >
+                <div className="service-card-glow home-glow"></div>
+                <div className="service-card-icon home">
+                  <Home size={26} />
+                </div>
+                <h3 className="service-card-title">Home Visit</h3>
+                <p className="service-card-title-ar">زيارة منزلية</p>
+                <div className="service-card-divider"></div>
+                <p className="service-card-detail">1 Hour Massage</p>
+                <div className="service-card-price">250 <span>SAR</span></div>
+                <p className="service-card-detail-ar">مساج استرخائي لمدة ساعة</p>
+              </motion.div>
+
+              {/* Hotel Visit Card */}
+              <motion.div
+                className="service-card"
+                whileHover={{ scale: 1.04, y: -6 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              >
+                <div className="service-card-glow hotel-glow"></div>
+                <div className="service-card-icon hotel">
+                  <Building2 size={26} />
+                </div>
+                <h3 className="service-card-title">Hotel Visit</h3>
+                <p className="service-card-title-ar">زيارة فندقية</p>
+                <div className="service-card-divider"></div>
+                <p className="service-card-detail">Premium Service</p>
+                <div className="service-card-price">300 <span>SAR</span></div>
+                <p className="service-card-detail-ar">خدمة فندقية مميزة</p>
+              </motion.div>
+            </div>
+          </motion.div>
           
-          <motion.div variants={itemVariants} className="section-label" style={{ marginTop: '32px' }}>
+          <motion.div variants={itemVariants} className="section-label">
             احجز جلستك
           </motion.div>
           
-          <motion.div variants={itemVariants}>
+          <motion.div variants={itemVariants} className="buttons-row">
             <MagneticButtonDemo />
+            <PhoneButton />
+          </motion.div>
+
+          {/* Booking Details & Guidelines */}
+          <motion.div variants={itemVariants} className="booking-details">
+            <h3 className="booking-header">:للحجز عن طريق الواتساب</h3>
+            <ul className="booking-list">
+              <li>الرجاء ارسال موقعك لإرسال صور المختصات</li>
+              <li>سيتم الدفع للسائق عند الوصول لموقعك</li>
+            </ul>
+            <p className="booking-footnote">*((الرياض فقط))*</p>
           </motion.div>
 
         </motion.div>
