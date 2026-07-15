@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { MagneticButton } from "./ui/magnetic-button";
 
 export default function MagneticButtonDemo() {
@@ -12,6 +13,7 @@ export default function MagneticButtonDemo() {
           className="magnetic-btn"
         >
           Chat on Whatsapp
+          <ArrowRight size={18} style={{ display: "inline-block", flexShrink: 0, marginLeft: "8px" }} />
         </button>
       </MagneticButton>
     </div>
